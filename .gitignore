@@ -7,7 +7,7 @@ dist
 app/bower_components
 
 # This is generated from files in app/scripts/src
-# We don't use a separate lib path because it makes live updating chrome take longer and we want it snappy
+# We don't use a separate build path because it makes live updating chrome take longer and we want it snappy
 app/scripts/*
 !app/scripts/src/**
 
