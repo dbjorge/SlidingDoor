@@ -131,7 +131,7 @@ module.exports = function (grunt) {
       chrome: {
         files: [{
           expand: true,
-          cwd: '<%= config.app %>/scripts',
+          cwd: '<%= config.app %>/scripts/src',
           src: '{,*/}*.{coffee,litcoffee,coffee.md}',
           dest: '<%= config.app %>/scripts',
           ext: '.js'
@@ -140,7 +140,7 @@ module.exports = function (grunt) {
       dist: {
         files: [{
           expand: true,
-          cwd: '<%= config.app %>/scripts',
+          cwd: '<%= config.app %>/scripts/src',
           src: '{,*/}*.{coffee,litcoffee,coffee.md}',
           dest: '<%= config.app %>/scripts',
           ext: '.js'
@@ -149,7 +149,7 @@ module.exports = function (grunt) {
       test: {
         files: [{
           expand: true,
-          cwd: 'test/spec',
+          cwd: 'test/spec/src',
           src: '{,*/}*.coffee',
           dest: './spec',
           ext: '.js'
