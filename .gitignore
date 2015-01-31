@@ -5,6 +5,7 @@ temp
 dist
 .sass-cache
 app/bower_components
+*.log
 
 # This is generated from files in app/scripts/src
 # We don't use a separate build path because it makes live updating chrome take longer and we want it snappy
