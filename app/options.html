@@ -10,13 +10,27 @@
         <!-- endbuild -->
     </head>
     <body>
-        <h1>'Allo, 'Allo!</h1>
-                
+        <h1>Job Results</h1>
+        
+        Filtering style:
+        <select id="jobResultsFilteringStyle">
+            <option value="disabled">No filtering</option>
+            <option value="dim">Dim filtered results</option>
+            <option value="hidden">Hide filtered results</option>
+        </select>
+        
+        <label>
+            <input type="checkbox" id="jobResultsEndlessMode"/>
+            Endless Mode
+        </label>
+        
+        <button id="save">Save</button>
+        
         <!-- build:js scripts/vendor.js -->
         <!-- bower:js -->
+        <script src="bower_components/jquery/dist/jquery.js"></script>
         <!-- endbower -->
         <!-- endbuild -->
-
         <!-- build:js scripts/options.js -->
         <script src="scripts/options.js"></script>
         <!-- endbuild -->
