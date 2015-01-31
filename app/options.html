@@ -1,38 +1,49 @@
 <!doctype html>
 <html>
-    <head>
-        <!-- build:css styles/vendor.css -->
-        <!-- bower:css -->
-        <!-- endbower -->
-        <!-- endbuild -->
-        <!-- build:css styles/main.css -->
-        <link href="styles/main.css" rel="stylesheet">
-        <!-- endbuild -->
-    </head>
-    <body>
-        <h1>Job Results</h1>
-        
-        Filtering style:
-        <select id="jobResultsFilteringStyle">
-            <option value="disabled">No filtering</option>
-            <option value="dim">Dim filtered results</option>
-            <option value="hidden">Hide filtered results</option>
-        </select>
-        
-        <label>
-            <input type="checkbox" id="jobResultsEndlessMode"/>
-            Endless Mode
-        </label>
-        
-        <button id="save">Save</button>
-        
-        <!-- build:js scripts/vendor.js -->
-        <!-- bower:js -->
-        <script src="bower_components/jquery/dist/jquery.js"></script>
-        <!-- endbower -->
-        <!-- endbuild -->
-        <!-- build:js scripts/options.js -->
-        <script src="scripts/options.js"></script>
-        <!-- endbuild -->
-    </body>
+  <head>
+    <!-- build:css styles/vendor.css -->
+    <!-- bower:css -->
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css styles/main.css -->
+    <link href="styles/main.css" rel="stylesheet">
+    <!-- endbuild -->
+    <title>Sliding Glassdoor options</title>
+    <style>
+      body: { padding: 10px; }
+    </style>
+  </head>
+  <body>
+    <h1>Job Results</h1>
+
+    <div class="option">
+      Filtering style
+      <select id="jobResultsFilteringStyle">
+        <option value="disabled">No filtering</option>
+        <option value="dim">Dim filtered results</option>
+        <option value="hidden">Hide filtered results</option>
+      </select>
+    </div>
+
+    <div class="option">
+      <label>
+        Endless Mode
+        <input type="checkbox" id="jobResultsEndlessMode"/>
+      </label>
+    </div>
+    
+    <div class="controls">
+      <button id="saveButton">Save</button>
+      <span id="saveStatus"></span>
+    </div>
+    
+    <!-- build:js scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:js scripts/options.js -->
+    <script src="scripts/options.js"></script>
+    <!-- endbuild -->
+  </body>
 </html>
