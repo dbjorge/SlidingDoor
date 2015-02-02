@@ -1,10 +1,10 @@
 {
   "appName": {
-    "message": "SlidingGlassdoor",
-    "description": "The name of the application"
+    "message": "SlidingDoor",
+    "description": "The name of the extension"
   },
   "appDescription": {
-    "message": "My Chrome Extension",
-    "description": "The description of the application"
+    "message": "Adds extra features to the Glassdoor.com job seeker experience",
+    "description": "The description of the extension"
   }
 }

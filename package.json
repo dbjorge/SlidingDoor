@@ -1,9 +1,9 @@
 {
-  "name": "slidingglassdoor",
+  "name": "slidingdoor",
   "version": "0.0.0",
   "repository": {
     "type": "git",
-    "url": "git://github.com/dbjorge/SlidingGlassdoor.git"
+    "url": "git://github.com/dbjorge/SlidingDoor.git"
   },
   "dependencies": {},
   "devDependencies": {
