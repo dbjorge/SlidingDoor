@@ -1,3 +1,7 @@
 body {
-  padding: 20px;
+  padding: 10px;
 }
+
+.dimForInadequateRatingCount {opacity: .33}
+.dimForInadequateRatingCount:hover {opacity: .8}
+.hideForInadequateRatingCount {display:none}

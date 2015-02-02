@@ -3,14 +3,14 @@
 defaultOptions = {
   'jobResults': {
     # One of ['disabled','dim','hidden']
-    'filteringStyle': 'hidden'
+    'filteringMode': 'hidden'
     'endlessMode': true
   }
 }
 
 parseOptions = -> {
   'jobResults': {
-    'filteringStyle': $('#jobResultsFilteringStyle').val()
+    'filteringMode': $('#jobResultsFilteringMode').val()
     'endlessMode': $('#jobResultsEndlessMode').is(':checked')
   }
 }
@@ -23,7 +23,7 @@ saveOptions = ->
     setTimeout (-> status.text ''), 750
 
 loadOptionsFromObject = (options) ->
-  $('#jobResultsFilteringStyle').val(options.jobResults.filteringStyle)
+  $('#jobResultsFilteringMode').val(options.jobResults.filteringMode)
   $('#jobResultsEndlessMode').prop('checked', options.jobResults.endlessMode)
 
 loadOptions = ->

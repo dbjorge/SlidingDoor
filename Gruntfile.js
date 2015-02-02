@@ -330,7 +330,8 @@ module.exports = function (grunt) {
 
   grunt.registerTask('debug', function () {
     grunt.task.run([
-      'jshint',
+      // Coffeescript generates jshint-unclean code
+      // 'jshint',
       'concurrent:chrome',
       'connect:chrome',
       'watch'
