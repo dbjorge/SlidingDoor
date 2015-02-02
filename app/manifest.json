@@ -33,7 +33,7 @@
         "bower_components/jquery/dist/jquery.js",
         "bower_components/uri.js/src/URI.js",
         "bower_components/uri.js/src/jquery.URI.js",
-        "scripts/job_contentscript.js"
+        "scripts/job_minratingfilter.js"
       ],
       "run_at": "document_idle",
       "all_frames": false
