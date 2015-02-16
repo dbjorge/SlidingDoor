@@ -1,6 +1,7 @@
 'use strict'
 
 filteringMode = 'disabled'
+currentMinRatingCount = 0
 
 getInadequateRatingCountStyle = ->
   {
@@ -9,8 +10,8 @@ getInadequateRatingCountStyle = ->
     'hidden': 'hideForInadequateRatingCount'
   }[filteringMode]
 
-updatePagingControlLinks = (minRatingCount) ->
-  $('.pagingControls').find('a[href]').each (_, pagingControlLink) ->
+updatePagingControlLinks = (rootSelector, minRatingCount) ->
+  $(rootSelector).find('.pagingControls').find('a[href]').each (_, pagingControlLink) ->
     $(pagingControlLink).uri().setSearch('minRatingCount', minRatingCount)
 
 stringEndsWithPlus = (s) -> /[+]$/.test s
@@ -32,24 +33,25 @@ getJobScopeWrapperRatingCount = (jobScopeWrapper) ->
 setJobScopeWrapperDimness = (jobScopeWrapper, shouldBeDim) ->
   jobScopeWrapper.toggleClass getInadequateRatingCountStyle(), shouldBeDim
 
-dimResultsWithFewerRatingsThan = (minRatings) ->
-  $('.jobScopeWrapper').each (_, jobScopeWrapper) ->
+dimResultsWithFewerRatingsThan = (rootSelector, minRatings) ->
+  $(rootSelector).find('.jobScopeWrapper').each (_, jobScopeWrapper) ->
     ratingCount = getJobScopeWrapperRatingCount $(jobScopeWrapper)
     shouldBeDim = ratingCount < minRatings;
     setJobScopeWrapperDimness $(jobScopeWrapper), shouldBeDim
 
+applyMinRatingCount = (rootSelector) ->
+  console.log "Dimming filtered results"
+  dimResultsWithFewerRatingsThan rootSelector, currentMinRatingCount
+  console.log "Updating paging control links"
+  updatePagingControlLinks rootSelector, currentMinRatingCount
+
 updateMinRatingCount = ->
   rawNewMinRatingCount = $('#minRatingCountInput').val();
-  unless $.isNumeric(rawNewMinRatingCount)
-    console.log "Ignoring non-numeric minRatingCount: #{newMinRatingCount}"
-    return
-
-  newMinRatingCount = Number rawNewMinRatingCount
-  console.log "Applying new minRatingCount: #{newMinRatingCount}"
-  console.log "Dimming filtered results"
-  dimResultsWithFewerRatingsThan newMinRatingCount
-  console.log "Updating paging control links"
-  updatePagingControlLinks newMinRatingCount
+  if $.isNumeric(rawNewMinRatingCount)
+    currentMinRatingCount = Number rawNewMinRatingCount
+    applyMinRatingCount $('.jobListings')
+  else
+    console.log "Ignoring non-numeric minRatingCount: '#{rawNewMinRatingCount}'"
 
 patchJobsPageWithMinRatingCountFilter = ->
   employerMinRatingCountSelectorSource = '''
@@ -69,6 +71,11 @@ initializeMinRatingCountFilterFromGetParameters = ->
     $('#minRatingCountInput').val(minRatingCountGetParameter)
     updateMinRatingCount()
 
+startListeningForJobListingInjections = ->
+  $('.jobListings').livequery () ->
+    console.log('jobListings element added')
+    applyMinRatingCount $(this)
+
 loadSettings = (postLoadContinuation) ->
   chrome.storage.sync.get 'options', (options) ->
     # FIXME: Support the real option and default sensibly
@@ -80,3 +87,4 @@ $().ready ->
   loadSettings ->
     patchJobsPageWithMinRatingCountFilter()
     initializeMinRatingCountFilterFromGetParameters()
+    startListeningForJobListingInjections()

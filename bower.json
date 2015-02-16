@@ -4,7 +4,8 @@
   "dependencies": {
     "jquery": "~2.1",
     "uri.js": "~1.14",
-    "jquery.appear.js": "~0.3"
+    "jquery.appear.js": "~0.3",
+    "jquery-livequery": "~1.3"
   },
   "devDependencies": {}
 }

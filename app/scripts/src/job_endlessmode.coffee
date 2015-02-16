@@ -31,9 +31,6 @@ preProcessJobListings = (jobListings) ->
 # Happens after injection into page
 postProcessJobListings = (jobListings) ->
   lazyLoadImages jobListings
-  chrome.runtime.sendMessage
-    'action': 'jobListingsInjection'
-    'slidingDoorInjectionId': jobListings.data('slidingDoorInjectionId')
 
 loading = false
 pageLoadCount = 1
@@ -48,7 +45,10 @@ loadNextPage = ->
       console.log "SlidingDoor Endless Mode: Retrieved next page's contents. Injecting..."
 
       pageLoadCount++
-      nextPageJobListings = $(nextPageContent).find('.jobListings')
+      nextPageJobListings = $(nextPageContent)
+        .find('#JobSearchResults') # This is for performance - .jobListings is enough for uniqueness
+        .find('.jobListings')
+
       nextPageJobListings.addClass('slidingDoorInjected')
       nextPageJobListings.attr('data-slidingDoorInjectionId', pageLoadCount)
       preProcessJobListings nextPageJobListings

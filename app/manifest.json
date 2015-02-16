@@ -34,6 +34,7 @@
         "bower_components/jquery.appear.js/jquery.appear.js",
         "bower_components/uri.js/src/URI.js",
         "bower_components/uri.js/src/jquery.URI.js",
+        "bower_components/jquery-livequery/dist/jquery.livequery.min.js",
         "scripts/job_endlessmode.js",
         "scripts/job_minratingfilter.js"
       ],
@@ -41,7 +42,7 @@
       "all_frames": false
     }
   ],
-"web_accessible_resources": [
-  "images/ajax-loader.gif"
-]
+  "web_accessible_resources": [
+    "images/ajax-loader.gif"
+  ]
 }
