@@ -31,6 +31,7 @@
       ],
       "js": [
         "bower_components/jquery/dist/jquery.js",
+        "bower_components/jquery.appear.js/jquery.appear.js",
         "bower_components/uri.js/src/URI.js",
         "bower_components/uri.js/src/jquery.URI.js",
         "scripts/job_endlessmode.js",
@@ -39,5 +40,8 @@
       "run_at": "document_idle",
       "all_frames": false
     }
-  ]
+  ],
+"web_accessible_resources": [
+  "images/ajax-loader.gif"
+]
 }
